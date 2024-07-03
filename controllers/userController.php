@@ -1,12 +1,21 @@
 <?php
-require_once __DIR__ . '/../models/userModel.php';
+require_once __DIR__ . '/../config/db.php';
 
 class UserController
 {
     public function listUsers()
     {
-        $userModel = new UserModel();
-        $users = $userModel->getUsers();
+        $conn = getDBConnection();
+        $sql = "SELECT id, username, email, phone FROM user";
+        $result = $conn->query($sql);
+
+        $users = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        $conn->close();
 
         if (empty($users)) {
             header('HTTP/1.1 404 Not Found');
