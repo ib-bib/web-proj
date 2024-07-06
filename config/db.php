@@ -1,13 +1,11 @@
 <?php
 
-$host = 'localhost';
-$db = 'project_db';
-$user = 'root';
-$pass = '';
+require_once( __DIR__ . "/../include/config.php");
 
 function getDBConnection()
 {
-    $conn = new mysqli($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['pass'], $GLOBALS['db']);
+    global $config;
+    $conn = new mysqli($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
