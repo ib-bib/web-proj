@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     <!-- Nav (should collapse to sidebar in mobile view) -->
     <div class="main">
       <p>Contact us by filling this form.</p>
-      <form class="cform" action="/views/contact.php" method="POST">
+      <form class="cform" action="/contact.php" method="POST">
           <input id="inp-field" type="email" name="email" placeholder="Email" required/>
           <input id="inp-field" type="text" name="subject" placeholder="Subject" required/>
           <textarea id="inp-field-txta" name="message" id="" placeholder="Message" required></textarea>
