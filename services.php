@@ -12,7 +12,7 @@ $services = $controller->listAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Services</title>
 </head>
 
@@ -31,19 +31,19 @@ $services = $controller->listAll();
                         <!-- Full-width images with number and caption text -->
                         <div class="mySlides fade">
                             <div class="numbertext">1 / 3</div>
-                            <img src="img1.jpg" style="width:100%">
+                            <img src="./assets/images/img1.jpg" style="width:100%">
                             <div class="text">Caption Text</div>
                         </div>
 
                         <div class="mySlides fade">
                             <div class="numbertext">2 / 3</div>
-                            <img src="img2.jpg" style="width:100%">
+                            <img src="./assets/images/img2.avif" style="width:100%">
                             <div class="text">Caption Two</div>
                         </div>
 
                         <div class="mySlides fade">
                             <div class="numbertext">3 / 3</div>
-                            <img src="img3.jpg" style="width:100%">
+                            <img src="./assets/images/img3.png" style="width:100%">
                             <div class="text">Caption Three</div>
                         </div>
 
@@ -65,7 +65,7 @@ $services = $controller->listAll();
     <?php else : ?>
         <p>No services found</p>
     <?php endif; ?>
-    <script src="/assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
