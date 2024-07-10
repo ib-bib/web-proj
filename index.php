@@ -14,7 +14,7 @@ switch ($request) {
         // Default route
         require 'home.html';
         break;
-    case 'services/':
+    case '/services':
         require 'services.php';
         break;
     default:

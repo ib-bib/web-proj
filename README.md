@@ -1,10 +1,9 @@
 # Web Development Semester Project
 
-### Instructions - Version 0.0.1
+### Instructions - Version 0.1.0
 
-- Clone this repo in `xampp/htdocs/`
-- Create a MySQL database
-- Review `config/db.php`
-- Create a 'user' table in your database
-- Review `models/userModel.php`
-- Review `test.rest` to test the endpoint
+- Just run the thing, you know what to do
+- For some reason this is very draining to work on
+- We will finish it though
+- I belive in our abilities
+- Why are you still reading?
