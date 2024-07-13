@@ -8,11 +8,17 @@ html,
 body {
   width: 100vw;
   min-height: 100vh;
+  max-width: 100%;
+}
+
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-image: url("../images/wallpaper.jpg");
+  background-size: cover;
 }
 
 footer {
@@ -22,6 +28,124 @@ footer {
 .main {
   width: 20%;
   height: 70%;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 100px;
+  transition: 300ms ease-in-out;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: large;
+}
+
+nav.sticky {
+  background: transparent;
+  backdrop-filter: blur(10px);
+}
+
+nav > div {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.not-current-span {
+  transition: all 150ms ease;
+  color: blue;
+}
+
+.not-current-span:hover,
+#current-span {
+  transform: translateY(-3px);
+}
+
+.not-current-link {
+  color: blue;
+}
+
+.not-current-link:hover {
+  color: darkblue;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+#current-link {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  color: darkblue;
+}
+
+.not-current-link {
+  text-decoration: none;
+}
+
+/* 
+#current-link.sticky {
+  color: darkblue;
+}
+
+.not-current-link.sticky,
+.not-current-span.sticky {
+  color: blue;
+}
+
+.not-current-link.sticky:hover {
+  color: darkblue;
+} */
+
+footer {
+  background-color: rgb(0, 0, 50);
+  color: white;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 40px;
+}
+
+.footer-section-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  color: aqua;
+}
+
+.footer-section-list > p {
+  padding-bottom: 6px;
+}
+
+.footer-section-subtitle {
+  margin-bottom: 6px;
+  color: white;
+}
+
+.footer-rights {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  align-items: flex-end;
+  padding-bottom: 4px;
+  color: aqua;
 }
 
 .cform {
@@ -147,32 +271,48 @@ footer {
   margin-top: 30px;
 }
 
+.service-pricing {
+  width: 95%;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(100, 100, 150, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.service-pricing-heading {
+  color: white;
+  padding-left: 40px;
+}
+
 .pricing-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 8px;
-  border-radius: 5%;
+  border-radius: 20px;
   height: 480px;
   width: 256px;
-  border: 1px solid gainsboro;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   transition: all 200ms ease-in-out;
-  background-color: beige;
+  background-color: rgb(150, 255, 255);
   margin-top: 10px;
 }
 
 .pricing-card:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(-10px);
+  cursor: pointer;
 }
 
 .pricing-inner-card {
   transform: translateY(-20px);
   background-color: white;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  border-radius: 5%;
+  border-radius: 20px;
   width: 90%;
   height: 128px;
   display: flex;
@@ -182,7 +322,12 @@ footer {
 
 .pricing-card-content {
   height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 75%;
+  padding: 8px;
+}
+
+@media screen and (max-width: 640px) {
+  .pricing-card {
+    margin-bottom: 20px;
+  }
 }
