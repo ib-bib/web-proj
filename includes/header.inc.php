@@ -3,7 +3,7 @@
     <span id="current-span"><a id="current-link">Home</a></span>
     <span class="not-current-span">|</span>
     <span class="not-current-span"
-        ><a class="not-current-link" href="./about.html">About Us</a></span
+        ><a class="not-current-link" href="./about.php">About Us</a></span
     >
     <span class="not-current-span"
         ><a class="not-current-link" href="./services.php">Services</a></span
