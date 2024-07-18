@@ -135,3 +135,69 @@ INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES
 INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-1.jpg', 'Mobile App Dev', 5);
 INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-2.jpg', 'Mobile App Dev', 5);
 INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-3.jpg', 'Mobile App Dev', 5);
+
+/* Service Tier Features */
+-- UI/UX
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (1, "Basic wireframing and mockups");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (1, "Usability testing and feedback");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (1, "Initial design consultations");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (2, "Advanced wireframing and prototypes");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (2, "In-depth usability analysis");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (2, "Iterative design refinements");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (3, "Comprehensive user experience strategy");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (3, "High-fidelity prototypes");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (3, "Full design system development");
+
+-- Front-end
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (4, "Basic HTML/CSS development");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (4, "Responsive design for mobile");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (4, "Basic JavaScript interactions");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (5, "Advanced CSS animations and transitions");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (5, "Cross-browser compatibility testing");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (5, "JavaScript framework integration");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (6, "Custom front-end architecture");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (6, "Performance optimization and SEO");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (6, "Full accessibility compliance");
+
+-- Back-end
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (7, "Basic API development");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (7, "Database schema design");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (7, "Basic authentication and authorization");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (8, "Advanced API integrations");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (8, "Database optimization and indexing");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (8, "Role-based access control");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (9, "Microservices architecture");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (9, "Real-time data processing");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (9, "Advanced security protocols");
+
+-- Full-stack
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (10, "Basic front-end and back-end setup");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (10, "Integration of front-end with back-end APIs");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (10, "Basic user authentication");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (11, "Advanced front-end and back-end features");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (11, "Enhanced performance optimization");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (11, "Advanced user management system");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (12, "End-to-end full-stack solution");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (12, "Scalable application architecture");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (12, "Comprehensive security measures");
+
+-- Mobile Apps
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (13, "Basic app development for iOS/Android");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (13, "App store submission assistance");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (13, "Basic user interface design");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (14, "Advanced app features and functionalities");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (14, "Integration with third-party services");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (14, "Advanced UI/UX design");
+
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (15, "Custom mobile app solutions");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (15, "Real-time app updates and maintenance");
+INSERT INTO project_db.service_tier_feature (service_tier_id, description) VALUES (15, "Comprehensive app security and performance optimization");
