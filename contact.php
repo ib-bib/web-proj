@@ -1,19 +1,11 @@
 <?php
-/*
-Author:  Talal
-*/
-include_once(__DIR__ . "/config/db.php");
+
+include_once(__DIR__ . "/controllers/MessageController.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $dbc = getDBConnection();
   if (isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
-    $cemail = $dbc->real_escape_string($_POST['email']);
-    $csubject = $dbc->real_escape_string($_POST['subject']);
-    $cmessage = $dbc->real_escape_string($_POST['message']);
-
-    // insert data to database
-    $sql = "INSERT INTO messages (email, subject, message) VALUES ('" . $cemail . "', '" . $csubject . "', '" . $cmessage . "')";
-    $res = $dbc->query($sql);
+    
+    $res = addMessage($_POST['subject'], $_POST['message'], $_POST['email']);
 
     header("Content-Type: application/json");
 
@@ -35,19 +27,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <style>
+  <title>ContactUS</title>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+  <style> 
+    .cform {
+      padding: 5px;
+      width: 100%;
+      height: 30em;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      justify-items: center;
+    }
 
+    #inp-field {
+      border: 3px solid black;
+      padding: 4px;
+    }
+
+    #inp-field-txta {
+      height: 40%;
+      border: 3px solid black;
+      padding: 4px;
+      resize: none;
+    }
+
+    #inp-submit {
+      width: 15%;
+      border: 1px solid black;
+      padding: 4px;
+      align-self: center;
+    }
   </style>
 </head>
 
 <body>
-  <?php $current_page = 'contact';
-  include('includes/header.inc.php'); ?>
+  <?php $current_page = 'contact'; include('includes/header.inc.php'); ?>
+  <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
   <main class="contact-main">
     <p>Contact us by filling this form.</p>
-    <form class="cform" action="./contact.php" method="POST">
+    <form class="cform" target="dummyframe" action="./contact.php" method="POST" onsubmit="alert('Message sent!')">
       <input id="inp-field" type="email" name="email" placeholder="Email" required />
       <input id="inp-field" type="text" name="subject" placeholder="Subject" required />
       <textarea id="inp-field-txta" name="message" id="" placeholder="Message" required></textarea>
@@ -56,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
   <?php include('includes/footer.inc.php'); ?>
   <script src="./assets/js/script.js"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>
