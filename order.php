@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php include('includes/header.inc.php'); ?>
+    <?php $current_page = 'order'; include('includes/header.inc.php'); ?>
     <main id='order-main'>
         <div class="new-order-card">
             <h2>Place A New Order</h2>

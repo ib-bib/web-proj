@@ -22,7 +22,7 @@ GRANT ALL PRIVILEGES ON project_db.* TO 'webproju'@'localhost';
 CREATE TABLE IF NOT EXISTS project_db.service (  
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
-  description VARCHAR(100) NOT NULL,
+  description VARCHAR(1024) NOT NULL,
   PRIMARY KEY (id)
 );
 

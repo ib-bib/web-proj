@@ -35,10 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ContactUS</title>
   <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    
+  </style>
 </head>
 
 <body>
-  <?php include('includes/header.inc.php'); ?>
+  <?php $current_page = 'contact'; include('includes/header.inc.php'); ?>
   <main class="contact-main">
     <p>Contact us by filling this form.</p>
     <form class="cform" action="./contact.php" method="POST">

@@ -27,7 +27,7 @@
     </style>
   </head>
   <body>
-    <?php include('includes/header.inc.php'); ?>
+    <?php $current_page = 'about'; include('includes/header.inc.php'); ?>
     <div class="main">
       We build amazing software, from UI/UX designs, frontend development,
       strong and fast backend implementation, to mobile applications. We provide
