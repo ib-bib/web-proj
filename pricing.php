@@ -1,6 +1,6 @@
 <?php
 /*
-Done By Elteyp
+Author:  Elteyp
 */
 include_once(__DIR__ . "/controllers/ServiceController.php");
 $serviceController = new ServiceController();
@@ -17,7 +17,8 @@ $pricingInfo = $serviceController->getPricingInfo();
 </head>
 
 <body>
-    <?php $current_page = 'pricing'; include('includes/header.inc.php'); ?>
+    <?php $current_page = 'pricing';
+    include('includes/header.inc.php'); ?>
     <div class="service-pricing">
         <?php foreach ($pricingInfo as $service) : ?>
             <h1 class="service-pricing-heading"><?php echo $service['name']; ?></h1>

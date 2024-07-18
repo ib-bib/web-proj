@@ -1,6 +1,6 @@
 <?php
 /*
-Done By Talal
+Author:  Talal
 */
 include_once(__DIR__ . "/controllers/ServiceController.php");
 
@@ -21,7 +21,8 @@ $servicesInfo = $controller->getServicesInfo();
 </head>
 
 <body>
-    <?php $current_page = 'services'; include('includes/header.inc.php'); ?>
+    <?php $current_page = 'services';
+    include('includes/header.inc.php'); ?>
     <?php foreach ($servicesInfo as $service) : ?>
         <section class="service-section" data-service-id="<?php echo $service['id']; ?>">
             <div class="service-container">

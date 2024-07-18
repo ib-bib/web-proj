@@ -1,5 +1,7 @@
 <?php
-
+/*
+Author:  Talal
+*/
 include_once(__DIR__ . "/config/db.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,15 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ContactUS</title>
+  <title>Contact Us</title>
   <link rel="stylesheet" href="./assets/css/style.css">
   <style>
-    
+
   </style>
 </head>
 
 <body>
-  <?php $current_page = 'contact'; include('includes/header.inc.php'); ?>
+  <?php $current_page = 'contact';
+  include('includes/header.inc.php'); ?>
   <main class="contact-main">
     <p>Contact us by filling this form.</p>
     <form class="cform" action="./contact.php" method="POST">

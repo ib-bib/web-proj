@@ -1,6 +1,6 @@
 <?php
 /*
-Done By Ibrahim
+Author:  Ibrahim
 */
 session_start();
 include_once(__DIR__ . "/controllers/OrderController.php");
@@ -73,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php $current_page = 'order'; include('includes/header.inc.php'); ?>
+    <?php $current_page = 'order';
+    include('includes/header.inc.php'); ?>
     <main id='order-main'>
         <div class="new-order-card">
             <h2>Place A New Order</h2>
