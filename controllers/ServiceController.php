@@ -1,9 +1,18 @@
 <?php
+/*
+Author: Ibrahim
+Created: July 14
+Modified: July 18
+*/
+
+// Include necessary models
 include_once(__DIR__ . "/../models/ServiceModel.php");
 include_once(__DIR__ . "/../models/TierModel.php");
 include_once(__DIR__ . "/../models/ServiceTierModel.php");
 include_once(__DIR__ . "/../models/ServiceImageModel.php");
 include_once(__DIR__ . "/../models/ServiceTierFeatureModel.php");
+
+// ServiceController class to handle service-related operations
 class ServiceController
 {
     private $serviceModel;
@@ -11,6 +20,7 @@ class ServiceController
     private $imageModel;
     private $featureModel;
 
+    // Constructor to initialize model instances
     public function __construct()
     {
         $this->serviceModel = new ServiceModel();
@@ -19,15 +29,18 @@ class ServiceController
         $this->featureModel = new ServiceTierFeatureModel();
     }
 
+    // Method to show a specific service by ID
     public function show($id)
     {
         $service = $this->serviceModel->get($id);
         if ($service) {
+            // Code to display the service details
         } else {
             echo "Service not found.";
         }
     }
 
+    // Method to get pricing information for all services
     public function getPricingInfo()
     {
         $services = $this->serviceModel->getAllServices();
@@ -67,6 +80,7 @@ class ServiceController
         return $data;
     }
 
+    // Method to get information for all services
     public function getServicesInfo()
     {
         $services = $this->serviceModel->getAllServices();

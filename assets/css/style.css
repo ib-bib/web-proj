@@ -1,9 +1,16 @@
+/* Authors: Ibrahim, Elteyb
+Created: June 19th 
+Modified: July 18th 
+*/
+
+/* Reset margin, padding, and box-sizing for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Set the html and body to take full viewport width and height */
 html,
 body {
   width: 100vw;
@@ -11,6 +18,7 @@ body {
   max-width: 100%;
 }
 
+/* Center body content, set font and background image */
 body {
   display: flex;
   flex-direction: column;
@@ -21,6 +29,7 @@ body {
   background-size: cover;
 }
 
+/* Style the navigation bar */
 nav {
   display: flex;
   justify-content: center;
@@ -43,6 +52,7 @@ nav {
   font-size: large;
 }
 
+/* Modify nav when it has the 'sticky' class */
 nav.sticky {
   background: transparent;
   backdrop-filter: blur(10px);
@@ -50,6 +60,7 @@ nav.sticky {
   border-radius: 0px;
 }
 
+/* Style the nav's child div */
 nav > div {
   width: 75%;
   display: flex;
@@ -58,42 +69,50 @@ nav > div {
   align-items: center;
 }
 
+/* Style for non-current span elements */
 .not-current-span {
   transition: all 250ms ease;
   color: blue;
 }
 
+/* Hover and current span styling */
 .not-current-span:hover,
 #current-span {
   transform: translateY(-3px);
 }
 
+/* Style for non-current links */
 .not-current-link {
   color: blue;
 }
 
+/* Remove text-decoration and add transition for links */
 .not-current-link {
   text-decoration: none;
   transition: all 250ms ease;
 }
 
+/* Hover state for non-current links */
 .not-current-link:hover {
   color: darkblue;
   text-decoration: underline;
   text-underline-offset: 6px;
 }
 
+/* Style for current link */
 #current-link {
   text-decoration: underline;
   text-underline-offset: 6px;
   color: darkblue;
 }
 
+/* Main contact section styling */
 .contact-main {
   width: 20%;
   height: 70%;
 }
 
+/* Style the footer */
 footer {
   background-color: rgb(0, 0, 50);
   color: white;
@@ -102,12 +121,14 @@ footer {
   margin-top: auto;
 }
 
+/* Flex layout for footer sections */
 .footer-sections {
   display: flex;
   justify-content: space-around;
   padding-bottom: 40px;
 }
 
+/* Style footer section list */
 .footer-section-list {
   display: flex;
   flex-direction: column;
@@ -116,6 +137,7 @@ footer {
   transition: all 250ms ease;
 }
 
+/* Style footer section links */
 .footer-section-list > a {
   padding-bottom: 6px;
   cursor: pointer;
@@ -124,19 +146,23 @@ footer {
   transition: all 250ms ease;
 }
 
+/* Hover state for footer links */
 .footer-section-list > a:hover {
   color: rgba(0, 255, 255, 0.75);
 }
 
+/* Visited state for footer links */
 .footer-section-list > a:visited {
   color: rgba(0, 255, 255, 0.25);
 }
 
+/* Subtitle styling in the footer */
 .footer-section-subtitle {
   margin-bottom: 6px;
   color: white;
 }
 
+/* Footer rights alignment and styling */
 .footer-rights {
   display: flex;
   justify-content: flex-end;
@@ -146,6 +172,7 @@ footer {
   color: aqua;
 }
 
+/* Style for the contact form container */
 .cform {
   padding: 5px;
   height: 100%;
@@ -156,11 +183,13 @@ footer {
   justify-items: center;
 }
 
+/* Input field styling */
 #inp-field {
   border: 3px solid black;
   padding: 4px;
 }
 
+/* Textarea input field styling */
 #inp-field-txta {
   height: 40%;
   border: 3px solid black;
@@ -168,6 +197,7 @@ footer {
   resize: none;
 }
 
+/* Submit button styling */
 #inp-submit {
   width: 15%;
   border: 1px solid black;
@@ -175,6 +205,7 @@ footer {
   align-self: center;
 }
 
+/* Container for pricing sections */
 .pricing-container {
   display: flex;
   justify-content: space-around;
@@ -184,6 +215,7 @@ footer {
   margin-top: 30px;
 }
 
+/* Service pricing box styling */
 .service-pricing {
   width: 90%;
   padding: 10px;
@@ -195,10 +227,12 @@ footer {
   backdrop-filter: blur(20px);
 }
 
+/* Service pricing heading styling */
 .service-pricing-heading {
   padding-left: 40px;
 }
 
+/* Pricing card styling */
 .pricing-card {
   display: flex;
   flex-direction: column;
@@ -214,11 +248,13 @@ footer {
   margin-top: 10px;
 }
 
+/* Hover state for pricing card */
 .pricing-card:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(-10px);
 }
 
+/* Inner card styling within pricing card */
 .pricing-inner-card {
   transform: translateY(-20px);
   background-color: white;
@@ -231,12 +267,14 @@ footer {
   align-items: center;
 }
 
+/* Content styling inside pricing card */
 .pricing-card-content {
   height: 80%;
   width: 75%;
   padding: 8px;
 }
 
+/* Order button styling within pricing section */
 .pricing-order-btn {
   font-weight: bold;
   font-size: large;
@@ -251,12 +289,14 @@ footer {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
+/* Hover state for order button */
 .pricing-order-btn:hover {
   background-color: blue;
   color: white;
   cursor: pointer;
 }
 
+/* Tier button styling */
 .tier {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -268,12 +308,14 @@ footer {
   transition: all 250ms ease;
 }
 
+/* Hover state for tier button */
 .tier:hover {
   background-color: blue;
   cursor: pointer;
   color: white;
 }
 
+/* Main order section styling */
 #order-main {
   width: 100%;
   display: flex;
@@ -283,6 +325,7 @@ footer {
   gap: 10px;
 }
 
+/* Style for select and input elements */
 select,
 input {
   padding-top: 15px;
@@ -295,6 +338,7 @@ input {
   border: none;
 }
 
+/* New order card styling */
 .new-order-card {
   width: 60%;
   border-radius: 50px;
@@ -304,6 +348,7 @@ input {
   box-shadow: 0 8px 12px -2px rgb(0 0 0 / 0.2), 0 4px 2px -4px rgb(0 0 0 / 0.2);
 }
 
+/* Layout for new order form */
 .new-order-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -311,11 +356,13 @@ input {
   align-items: center;
 }
 
+/* Price display in new order form */
 .order-price {
   padding-top: 10px;
   color: darkblue;
 }
 
+/* Container for new order button */
 .new-order-card-button-container {
   width: 100%;
   display: flex;
@@ -323,6 +370,7 @@ input {
   padding-top: 20px;
 }
 
+/* Track order card styling */
 .track-order-card {
   width: 60%;
   border-radius: 50px;
@@ -332,6 +380,7 @@ input {
   padding: 20px;
 }
 
+/* Layout for track order form */
 .track-order-form {
   display: flex;
   justify-content: center;
@@ -340,6 +389,7 @@ input {
   gap: 20px;
 }
 
+/* Styling for track status and new order buttons */
 .track-status-btn,
 .new-order-btn {
   padding-top: 10px;
@@ -351,6 +401,7 @@ input {
   transition: all 250ms ease;
 }
 
+/* Hover state for track status and new order buttons */
 .track-status-btn:hover,
 .new-order-btn:hover {
   background-color: blue;
@@ -358,11 +409,13 @@ input {
   cursor: pointer;
 }
 
+/* Active state for track status and new order buttons */
 .track-status-btn:active,
 .new-order-btn:active {
   background-color: darkblue;
 }
 
+/* Order reference styling */
 #order-ref {
   padding-left: 0;
   padding-right: 0;
@@ -370,7 +423,7 @@ input {
   text-align: center;
 }
 
-/* The Modal (background) */
+/* Modal background styling */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -384,7 +437,7 @@ input {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
+/* Modal content box styling */
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
@@ -395,7 +448,7 @@ input {
   animation-duration: 250ms;
 }
 
-/* Add Animation */
+/* Animation for modal appearance */
 @keyframes animatetop {
   from {
     top: -300px;
@@ -407,7 +460,7 @@ input {
   }
 }
 
-/* The Close Button */
+/* Close button styling for modal */
 .close {
   color: #aaa;
   float: right;
@@ -416,6 +469,7 @@ input {
   transition: all 250ms ease;
 }
 
+/* Hover and focus state for close button */
 .close:hover,
 .close:focus {
   color: black;
@@ -423,6 +477,7 @@ input {
   cursor: pointer;
 }
 
+/* Toast notification styling */
 .toast {
   position: fixed;
   bottom: 20px;
@@ -437,16 +492,11 @@ input {
   z-index: 1000;
 }
 
+/* Close button styling for toast */
 .toast button.close-toast-btn {
   background: none;
   border: none;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
-}
-
-@media screen and (max-width: 640px) {
-  .pricing-card {
-    margin-bottom: 20px;
-  }
 }

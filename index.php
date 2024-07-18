@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- 
-Author:  Ibrahim
+Authors:  Ibrahim, Talal
+Created: June 19
+Modified: July 18
 -->
 <html lang="en">
 
@@ -23,9 +25,6 @@ Author:  Ibrahim
       font-family: 'roboto';
       font-size: 36px;
       font-weight: bold;
-      /* color: white; */
-      /* background-color: rgba(75, 75, 100, 0.5); */
-      /* backdrop-filter: blur(20px); */
     }
 
     .btn-services {
@@ -41,6 +40,7 @@ Author:  Ibrahim
 <body>
   <?php $current_page = 'index';
   include('includes/header.inc.php'); ?>
+  <!-- Rendering the nav bar server-side -->
   <main class="home-main">
     <div class="intro">
       Welcome to TEI Technology for web development and mobile app development services.
@@ -49,9 +49,11 @@ Author:  Ibrahim
       <br><br>
       <a class="btn-services" href="./order.php">Order</a>
       <a class="btn-services" href="./services.php">Services</a>
+      <!-- Calls to action -->
     </div>
   </main>
   <?php include('includes/footer.inc.php'); ?>
+  <!-- Rendering the footer server-side -->
   <script src="./assets/js/script.js"></script>
 </body>
 
