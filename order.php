@@ -73,17 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <nav id="navbar">
-        <div>
-            <span class="not-current-span"><a class="not-current-link" href="./home.html">Home</a></span>
-            <span class="not-current-span">|</span>
-            <span class="not-current-span"><a class="not-current-link" href="./about.html">About</a></span>
-            <span class="not-current-span"><a class="not-current-link" href="./services.php">Services</a></span>
-            <span class="not-current-span"><a class="not-current-link" href="./pricing.php">Pricing</a></span>
-            <span id="current-span"><a id="current-link">Order</a></span>
-            <span class="not-current-span"><a class="not-current-link" href="./contact.php">Contact Us</a></span>
-        </div>
-    </nav>
+    <?php include('includes/header.inc.php'); ?>
     <main id='order-main'>
         <div class="new-order-card">
             <h2>Place A New Order</h2>
@@ -129,40 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button id="cancel-btn" class="cancel-btn" style="display: none;">Cancel Order</button>
         </div>
     </div>
-
-    <footer>
-        <div class="footer-sections">
-            <div>
-                <h4 class="footer-section-subtitle">The Team</h4>
-                <div class="footer-section-list">
-                    <a href="https://github.com/talalio">Talal Nasraddeen</a>
-                    <a href="https://github.com/elteyp">Elteyp Mohammed</a>
-                    <a href="https://github.com/ib-bib">Ibrahim Adil</a>
-                </div>
-            </div>
-            <div>
-                <h4 class="footer-section-subtitle">Connect With Us</h4>
-                <div class="footer-section-list">
-                    <a href="https://github.com">GitHub</a>
-                    <a href="https://linkedin.com">LinkedIn</a>
-                    <a href="https://youtube.com">YouTube</a>
-                    <a href="https://x.com">X (Twitter)</a>
-                </div>
-            </div>
-            <div>
-                <h4 class="footer-section-subtitle">Trusted Partners</h4>
-                <div class="footer-section-list">
-                    <a href="https://apachefriends.org">Apache Friends</a>
-                    <a href="https://php.net">Hypertext Preprocessor</a>
-                    <a href="https://mysql.com">MySQL</a>
-                    <a href="https://ecma-international.org">ECMA International</a>
-                    <a href="https://w3c.org">W3C</a>
-                    <a href="https://paypal.com">PayPal</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-rights">All Rights Reserved &copy; 2024 TEI Technolgy LLC.</div>
-    </footer>
+    <?php include('includes/footer.inc.php'); ?>
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
