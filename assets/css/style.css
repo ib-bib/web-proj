@@ -213,10 +213,10 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-bottom: 8px;
   border-radius: 20px;
-  height: 480px;
+  height: 360px;
   width: 256px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   transition: all 200ms ease-in-out;
@@ -227,7 +227,6 @@ footer {
 .pricing-card:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(-10px);
-  cursor: pointer;
 }
 
 .pricing-inner-card {
@@ -246,6 +245,26 @@ footer {
   height: 80%;
   width: 75%;
   padding: 8px;
+}
+
+.pricing-order-btn {
+  font-weight: bold;
+  font-size: large;
+  letter-spacing: 0.025em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: none;
+  transition: all 300ms ease;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.pricing-order-btn:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
 }
 
 .service-section {
@@ -286,6 +305,7 @@ footer {
 .tier:hover {
   background-color: blue;
   cursor: pointer;
+  color: white;
 }
 
 .service-title {

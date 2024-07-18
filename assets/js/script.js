@@ -40,3 +40,9 @@ window.addEventListener("scroll", function () {
     navbar.classList.remove("sticky");
   }
 });
+
+const toOrderPage = (serviceId, tierId) => {
+  sessionStorage.setItem("selectedServiceId", serviceId);
+  sessionStorage.setItem("selectedTierId", tierId);
+  window.location.href = "order.php";
+};

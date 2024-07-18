@@ -34,6 +34,7 @@ class ServiceController
             $tiers = $this->tierModel->getTiersByServiceId($serviceId);
 
             $serviceData = [
+                'id' => $service['id'],
                 'name' => $service['name'],
                 'tiers' => []
             ];
@@ -43,6 +44,7 @@ class ServiceController
                 $features = $this->featureModel->getFeaturesByServiceTierId($serviceTierId);
 
                 $tierData = [
+                    'id' => $tier['id'],
                     'name' => $tier['name'],
                     'price' => $tier['price'],
                     'features' => []
@@ -72,6 +74,7 @@ class ServiceController
             $images = $this->imageModel->getImagesByServiceId($serviceId);
 
             $serviceData = [
+                'id' => $service['id'],
                 'name' => $service['name'],
                 'description' => $service['description'],
                 'tiers' => [],
@@ -79,7 +82,10 @@ class ServiceController
             ];
 
             while ($tier = $tiers->fetch_assoc()) {
-                $serviceData['tiers'][] = $tier['name'];
+                $serviceData['tiers'][] = [
+                    'id' => $tier['id'],
+                    'name' => $tier['name']
+                ];
             }
 
             while ($image = $images->fetch_assoc()) {

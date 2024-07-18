@@ -39,6 +39,7 @@ $pricingInfo = $serviceController->getPricingInfo();
                                 <li><?php echo $feature; ?></li>
                             <?php endforeach; ?>
                         </ul>
+                        <button onclick="toOrderPage('<?php echo $service['id']; ?>', '<?php echo $tier['id']; ?>')" class="pricing-order-btn">Order</button>
                     </div>
                 <?php endforeach; ?>
             </div>

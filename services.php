@@ -34,7 +34,7 @@ $servicesInfo = $controller->getServicesInfo();
                 <h2 class="service-title"><?php echo $service['name']; ?></h2>
                 <div class="service-tiers">
                     <?php foreach ($service['tiers'] as $tier) : ?>
-                        <span class="tier"><?php echo $tier; ?></span>
+                        <span onclick="toOrderPage('<?php echo $service['id']; ?>', '<?php echo $tier['id']; ?>')" class="tier"><?php echo $tier['name']; ?></span>
                     <?php endforeach; ?>
                 </div>
             </div>

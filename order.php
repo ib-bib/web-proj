@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once(__DIR__ . "/controllers/OrderController.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,6 +11,14 @@ $data = $orderController->getServicesAndTiers();
 $services = $data['services'];
 $tiers = $data['tiers'];
 $serviceTiers = $data['serviceTiers'];
+
+// Retrieve values from session storage
+$selectedServiceId = isset($_SESSION['selectedServiceId']) ? $_SESSION['selectedServiceId'] : '';
+$selectedTierId = isset($_SESSION['selectedTierId']) ? $_SESSION['selectedTierId'] : '';
+
+// Clear the session values after retrieving them
+unset($_SESSION['selectedServiceId']);
+unset($_SESSION['selectedTierId']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
@@ -185,6 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 modal.style.display = "none";
             }
         };
+
         document.addEventListener('DOMContentLoaded', function() {
             const servicesDropdown = document.getElementById('services-dropdown');
             const tiersDropdown = document.getElementById('tiers-dropdown');
@@ -194,9 +204,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const cancelBtn = document.getElementById('cancel-btn')
 
             const serviceTiers = <?php echo json_encode($serviceTiers); ?>;
+            const sessionServiceId = sessionStorage.getItem('selectedServiceId');
+            const sessionTierId = sessionStorage.getItem('selectedTierId');
+
+            if (sessionServiceId) {
+                servicesDropdown.value = sessionServiceId;
+                tiersDropdown.disabled = false;
+
+                Array.from(tiersDropdown.options).forEach(option => {
+                    if (option.value === "" || serviceTiers.some(st => st.service_id == sessionServiceId && st.tier_id == option.value)) {
+                        option.style.display = "block";
+                    } else {
+                        option.style.display = "none";
+                    }
+                });
+
+                if (sessionTierId) {
+                    tiersDropdown.value = sessionTierId;
+                    emailInput.disabled = false;
+
+                    const selectedServiceTier = serviceTiers.find(st => st.service_id == sessionServiceId && st.tier_id == sessionTierId);
+                    if (selectedServiceTier) {
+                        const price = parseFloat(selectedServiceTier.price);
+                        priceDisplay.textContent = `$${price.toFixed(2)}`;
+                    } else {
+                        priceDisplay.textContent = "$00.00";
+                    }
+                }
+                sessionStorage.clear()
+            }
 
             servicesDropdown.addEventListener('change', function() {
-                const serviceId = this.value;
+                const serviceId = sessionServiceId ?? this.value;
                 if (serviceId) {
                     tiersDropdown.disabled = false;
 
