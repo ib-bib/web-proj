@@ -1,4 +1,7 @@
 <?php
+/*
+Done By Elteyp
+*/
 include_once(__DIR__ . "/controllers/ServiceController.php");
 $serviceController = new ServiceController();
 $pricingInfo = $serviceController->getPricingInfo();
@@ -48,41 +51,31 @@ $pricingInfo = $serviceController->getPricingInfo();
     <footer>
         <div class="footer-sections">
             <div>
-                <h4 class="footer-section-subtitle">Services</h4>
-                <div class="footer-section-list">
-                    <p>UI/UX Design</p>
-                    <p>Front-end</p>
-                    <p>Mobile Apps</p>
-                    <p>Back-end</p>
-                    <p>Full-stack</p>
-                </div>
-            </div>
-            <div>
                 <h4 class="footer-section-subtitle">The Team</h4>
                 <div class="footer-section-list">
-                    <p>Talal Nasrldeen</p>
-                    <p>Elteyp Mohammed</p>
-                    <p>Ibrahim Adil</p>
+                    <a href="https://github.com/talalio">Talal Nasraddeen</a>
+                    <a href="https://github.com/elteyp">Elteyp Mohammed</a>
+                    <a href="https://github.com/ib-bib">Ibrahim Adil</a>
                 </div>
             </div>
             <div>
                 <h4 class="footer-section-subtitle">Connect With Us</h4>
                 <div class="footer-section-list">
-                    <p>GitHub</p>
-                    <p>LinkedIn</p>
-                    <p>YouTube</p>
-                    <p>X (Twitter)</p>
+                    <a href="https://github.com">GitHub</a>
+                    <a href="https://linkedin.com">LinkedIn</a>
+                    <a href="https://youtube.com">YouTube</a>
+                    <a href="https://x.com">X (Twitter)</a>
                 </div>
             </div>
             <div>
                 <h4 class="footer-section-subtitle">Trusted Partners</h4>
                 <div class="footer-section-list">
-                    <p>Apache Friends</p>
-                    <p>Hypertext Preprocessor</p>
-                    <p>MySQL</p>
-                    <p>ECMA International</p>
-                    <p>W3C</p>
-                    <p>PayPal</p>
+                    <a href="https://apachefriends.org">Apache Friends</a>
+                    <a href="https://php.net">Hypertext Preprocessor</a>
+                    <a href="https://mysql.com">MySQL</a>
+                    <a href="https://ecma-international.org">ECMA International</a>
+                    <a href="https://w3c.org">W3C</a>
+                    <a href="https://paypal.com">PayPal</a>
                 </div>
             </div>
         </div>

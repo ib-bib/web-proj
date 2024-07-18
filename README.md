@@ -2,6 +2,5 @@
 
 ### Instructions - Version 0.1.0
 
-- Database Configuration
-- Seed Database
-- Run Project
+- Run `config/create_db.sql` to configure and seed the database
+- View project by navigating to `'/'` or `'/home.html'`

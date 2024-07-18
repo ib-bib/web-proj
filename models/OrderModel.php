@@ -15,6 +15,56 @@ class OrderModel
     private $status;
     private $reference_id;
 
+    public function setID($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    public function setServiceTierID($st_id)
+    {
+        $this->service_tier_id = $st_id;
+    }
+
+    public function getServiceTierID()
+    {
+        return $this->service_tier_id;
+    }
+
+    public function setClientEmail($email)
+    {
+        $this->client_email = $email;
+    }
+
+    public function getClientEmail()
+    {
+        return $this->client_email;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setReferenceID($ref_id)
+    {
+        $this->reference_id = $ref_id;
+    }
+
+    public function getReferenceID()
+    {
+        return $this->reference_id;
+    }
+
     public function getServicesAndTiers()
     {
         $services = [];

@@ -19,20 +19,20 @@ GRANT ALL PRIVILEGES ON project_db.* TO 'webproju'@'localhost';
  * TABLES
 */
 
-CREATE TABLE project_db.service (  
+CREATE TABLE IF NOT EXISTS project_db.service (  
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   description VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE project_db.tier (  
+CREATE TABLE IF NOT EXISTS project_db.tier (  
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE project_db.service_tier (  
+CREATE TABLE IF NOT EXISTS project_db.service_tier (  
   id INT NOT NULL AUTO_INCREMENT,
   tier_id INT NOT NULL,
   service_id INT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE project_db.service_tier (
   FOREIGN KEY (tier_id) REFERENCES tier(id)
 );
 
-CREATE TABLE project_db.service_tier_feature (  
+CREATE TABLE IF NOT EXISTS project_db.service_tier_feature (  
   id INT NOT NULL AUTO_INCREMENT,
   service_tier_id INT NOT NULL,
   description VARCHAR(100) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE project_db.service_tier_feature (
   FOREIGN KEY (service_tier_id) REFERENCES service_tier(id)
 );
 
-CREATE TABLE project_db.service_images (
+CREATE TABLE IF NOT EXISTS project_db.service_images (
 	id INT NOT NULL AUTO_INCREMENT,
 	image_url VARCHAR(255) NOT NULL,
 	image_name VARCHAR(255),
@@ -58,7 +58,7 @@ CREATE TABLE project_db.service_images (
 	FOREIGN KEY (service_id) REFERENCES service(id)
 );
 
-CREATE TABLE project_db.service_order (
+CREATE TABLE IF NOT EXISTS project_db.service_order (
   id INT NOT NULL AUTO_INCREMENT,
   client_email VARCHAR(100) NOT NULL,
   status VARCHAR(255) NOT NULL DEFAULT 'Processing',
@@ -68,7 +68,7 @@ CREATE TABLE project_db.service_order (
   FOREIGN KEY (service_tier_id) REFERENCES service_tier(id)
 );
 
-CREATE TABLE project_db.messages (
+CREATE TABLE IF NOT EXISTS project_db.messages (
   id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(100) NOT NULL,
   subject VARCHAR(100) NOT NULL,
@@ -120,11 +120,18 @@ INSERT INTO project_db.service_tier (tier_id, service_id, price) VALUES (2, 5, 3
 INSERT INTO project_db.service_tier (tier_id, service_id, price) VALUES (3, 5, 99.99);
 
 /* Service images */
-INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/img1.jpg', 'Service1', 1);
-INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/img2.avif', 'Service2', 2);
-
-/*
-INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/img1.jpg', 'Service1', 3);
-INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/img2.avif', 'Service2', 4);
-INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/img1.jpg', 'Service1', 5);
-*/
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ui-1.jpg', 'UI/UX', 1);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ui-2.jpg', 'UI/UX', 1);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ui-3.jpg', 'UI/UX', 1);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fe-1.jpg', 'Front-End', 2);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fe-2.jpg', 'Front-End', 2);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fe-3.jpg', 'Front-End', 2);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/be-1.jpg', 'Back-End', 3);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/be-2.jpg', 'Back-End', 3);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/be-3.jpg', 'Back-End', 3);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fs-1.jpg', 'Full-Stack', 4);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fs-2.jpg', 'Full-Stack', 4);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/fs-3.jpg', 'Full-Stack', 4);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-1.jpg', 'Mobile App Dev', 5);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-2.jpg', 'Mobile App Dev', 5);
+INSERT INTO project_db.service_images (image_url, image_name, service_id) VALUES ('/assets/images/ma-3.jpg', 'Mobile App Dev', 5);

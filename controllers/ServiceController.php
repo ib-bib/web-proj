@@ -1,5 +1,9 @@
 <?php
-include_once(__DIR__ . "/../models/ServiceModels.php");
+include_once(__DIR__ . "/../models/ServiceModel.php");
+include_once(__DIR__ . "/../models/TierModel.php");
+include_once(__DIR__ . "/../models/ServiceTierModel.php");
+include_once(__DIR__ . "/../models/ServiceImageModel.php");
+include_once(__DIR__ . "/../models/ServiceTierFeatureModel.php");
 class ServiceController
 {
     private $serviceModel;
