@@ -1,14 +1,77 @@
 <?php
+include_once(__DIR__ . "/../config/db.php");
 class OrderModel
 {
-    public $customer_email;
-    public $service_tier;
-    public $reference_id;
+    private $db;
 
-    public function __construct($customer_email, $service_tier, $reference_id)
+    public function __construct()
     {
-        $this->customer_email = $customer_email;
-        $this->service_tier = $service_tier;
-        $this->reference_id = $reference_id;
+        $this->db = getDBConnection();
+    }
+
+    private $id;
+    private $service_tier_id;
+    private $client_email;
+    private $status;
+    private $reference_id;
+
+    public function getServicesAndTiers()
+    {
+        $services = [];
+        $tiers = [];
+        $serviceTiers = [];
+
+        $sql = "SELECT id, name, description FROM service";
+        $result = $this->db->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $services[] = $row;
+        }
+
+        $sql = "SELECT id, name FROM tier";
+        $result = $this->db->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $tiers[] = $row;
+        }
+
+        $sql = "SELECT id, service_id, tier_id, price FROM service_tier";
+        $result = $this->db->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $serviceTiers[] = $row;
+        }
+
+        return ['services' => $services, 'tiers' => $tiers, 'serviceTiers' => $serviceTiers];
+    }
+
+    public function createOrder($serviceTierId, $clientEmail, $ref_id)
+    {
+        $status = 'pending';
+
+        $stmt = $this->db->prepare("INSERT INTO service_order (client_email, status, reference_id, service_tier_id) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$clientEmail, $status, $ref_id, $serviceTierId]);
+    }
+
+    public function trackOrder($orderRef)
+    {
+        $query = "SELECT id, status FROM service_order WHERE reference_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $orderRef);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return false;
+        }
+    }
+
+    public function cancelOrder($orderId)
+    {
+        $query = "UPDATE service_order SET status = 'cancelled' WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $orderId);
+        $result = $stmt->execute();
+
+        return $result;
     }
 }

@@ -71,7 +71,7 @@ $servicesInfo = $controller->getServicesInfo();
                 <div class="footer-section-list">
                     <p>UI/UX Design</p>
                     <p>Front-end</p>
-                    <p>Mobile App</p>
+                    <p>Mobile Apps</p>
                     <p>Back-end</p>
                     <p>Full-stack</p>
                 </div>
@@ -97,8 +97,11 @@ $servicesInfo = $controller->getServicesInfo();
                 <h4 class="footer-section-subtitle">Trusted Partners</h4>
                 <div class="footer-section-list">
                     <p>Apache Friends</p>
+                    <p>Hypertext Preprocessor</p>
+                    <p>MySQL</p>
                     <p>ECMA International</p>
                     <p>W3C</p>
+                    <p>PayPal</p>
                 </div>
             </div>
         </div>

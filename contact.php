@@ -49,6 +49,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <!-- Footer -->
+  <footer>
+    <div class="footer-sections">
+      <div>
+        <h4 class="footer-section-subtitle">Services</h4>
+        <div class="footer-section-list">
+          <p>UI/UX Design</p>
+          <p>Front-end</p>
+          <p>Mobile Apps</p>
+          <p>Back-end</p>
+          <p>Full-stack</p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-section-subtitle">The Team</h4>
+        <div class="footer-section-list">
+          <p>Talal Nasrldeen</p>
+          <p>Elteyp Mohammed</p>
+          <p>Ibrahim Adil</p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-section-subtitle">Connect With Us</h4>
+        <div class="footer-section-list">
+          <p>GitHub</p>
+          <p>LinkedIn</p>
+          <p>YouTube</p>
+          <p>X (Twitter)</p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-section-subtitle">Trusted Partners</h4>
+        <div class="footer-section-list">
+          <p>Apache Friends</p>
+          <p>Hypertext Preprocessor</p>
+          <p>MySQL</p>
+          <p>ECMA International</p>
+          <p>W3C</p>
+          <p>PayPal</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rights">All Rights Reserved &copy; 2024 TEI Technolgy LLC.</div>
+  </footer>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

@@ -1,24 +1,42 @@
 <?php
-require_once __DIR__ . '/../config/db.php';
+include_once(__DIR__ . "/../models/OrderModel.php");
 
 class OrderController
 {
-    public function createOrder($customer_email, $service_tier)
-    {
-        if (filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
-            $conn = getDBConnection();
-            $sql = "SELECT * FROM service_tier WHERE id = $service_tier";
-            $result = $conn->query($sql);
+    private $orderModel;
 
-            if (empty($result)) {
-                header('HTTP/1.1 404 Not Found');
-                echo json_encode(['message' => 'No services found']);
-            } else {
-                header('Content-Type: application/json');
-                echo json_encode($result);
-            }
-        } else {
-            // Invalid email
-        }
+    public function __construct()
+    {
+        $this->orderModel = new OrderModel();
+    }
+
+    public function getServicesAndTiers()
+    {
+        return $this->orderModel->getServicesAndTiers();
+    }
+
+    private function generateReferenceId()
+    {
+        $prefix = 'A';
+        $part1 = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+        $part2 = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+        $part3 = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+        return "$prefix-$part1-$part2-$part3";
+    }
+
+    public function createOrder($serviceTierId, $clientEmail)
+    {
+        $ref_id = $this->generateReferenceId();
+        return $this->orderModel->createOrder($serviceTierId, $clientEmail, $ref_id);
+    }
+
+    public function trackOrder($referenceId)
+    {
+        return $this->orderModel->trackOrder($referenceId);
+    }
+
+    public function cancelOrder($orderID)
+    {
+        return $this->orderModel->cancelOrder($orderID);
     }
 }

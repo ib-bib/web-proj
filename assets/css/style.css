@@ -206,7 +206,6 @@ footer {
 }
 
 .service-pricing-heading {
-  color: white;
   padding-left: 40px;
 }
 
@@ -415,6 +414,166 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+select,
+input {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+}
+
+.new-order-card {
+  width: 60%;
+  border-radius: 50px;
+  background-color: rgba(75, 75, 100, 0.5);
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 12px -2px rgb(0 0 0 / 0.2), 0 4px 2px -4px rgb(0 0 0 / 0.2);
+}
+
+.new-order-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+  align-items: center;
+}
+
+.order-price {
+  padding-top: 10px;
+  color: darkblue;
+}
+
+.new-order-card-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.track-order-card {
+  width: 60%;
+  border-radius: 50px;
+  background-color: rgba(75, 75, 100, 0.5);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 12px -2px rgb(0 0 0 / 0.2), 0 4px 2px -4px rgb(0 0 0 / 0.2);
+  padding: 20px;
+}
+
+.track-order-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.track-status-btn,
+.new-order-btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: lightblue;
+  border-radius: 25px;
+}
+
+.track-status-btn:hover,
+.new-order-btn:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+.track-status-btn:active,
+.new-order-btn:active {
+  background-color: darkblue;
+}
+
+#order-ref {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  z-index: 1000;
+  transition: opacity 0.3s;
 }
 
 @media screen and (max-width: 640px) {
