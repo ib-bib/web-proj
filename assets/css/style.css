@@ -427,13 +427,22 @@ input {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: white;
-  color: black;
-  padding: 10px 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 1000;
-  transition: opacity 250ms;
+}
+
+.toast button.close-toast-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 640px) {

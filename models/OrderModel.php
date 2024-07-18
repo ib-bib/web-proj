@@ -97,7 +97,11 @@ class OrderModel
         $status = 'pending';
 
         $stmt = $this->db->prepare("INSERT INTO service_order (client_email, status, reference_id, service_tier_id) VALUES (?, ?, ?, ?)");
-        return $stmt->execute([$clientEmail, $status, $ref_id, $serviceTierId]);
+        if ($stmt->execute([$clientEmail, $status, $ref_id, $serviceTierId])) {
+            return $ref_id; // Return the reference ID on success
+        } else {
+            return false; // Return false on failure
+        }
     }
 
     public function trackOrder($orderRef)

@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $serviceTierId = $_POST['service_tier_id'];
         $clientEmail = $_POST['client_email'];
 
-        $result = $orderController->createOrder($serviceTierId, $clientEmail);
+        $ref_id = $orderController->createOrder($serviceTierId, $clientEmail);
 
-        if ($result) {
-            echo json_encode(['success' => true]);
+        if ($ref_id) {
+            echo json_encode(['success' => true, 'reference_id' => $ref_id]);
         } else {
             echo json_encode(['success' => false]);
         }
@@ -253,6 +253,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     const toast = document.createElement('div');
                     toast.className = 'toast';
                     toast.textContent = 'Loading...';
+
+                    const closeButton = document.createElement('button');
+                    closeButton.className = 'close-toast-btn';
+                    closeButton.textContent = '×';
+                    closeButton.onclick = function() {
+                        document.body.removeChild(toast);
+                    };
+                    toast.appendChild(closeButton);
+
                     document.body.appendChild(toast);
 
                     fetch('order.php', {
@@ -265,23 +274,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                toast.textContent = 'Request made successfully';
+                                toast.textContent = `Request made successfully. Reference ID: ${data.reference_id}`;
                                 toast.style.backgroundColor = 'green';
+                                toast.appendChild(closeButton); // Append the close button again after changing text
                             } else {
                                 toast.textContent = 'Could not make request, please try again later.';
                                 toast.style.backgroundColor = 'red';
+                                toast.appendChild(closeButton); // Append the close button again after changing text
                             }
                         })
                         .catch(() => {
                             toast.textContent = 'Could not make request, please try again later.';
                             toast.style.backgroundColor = 'red';
+                            toast.appendChild(closeButton); // Append the close button again after changing text
                         })
                         .finally(() => {
                             requestButton.textContent = 'Request';
                             requestButton.disabled = false;
-                            setTimeout(() => {
-                                document.body.removeChild(toast);
-                            }, 3000);
                         });
                 }
             });
