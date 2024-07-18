@@ -17,7 +17,7 @@ $pricingInfo = $serviceController->getPricingInfo();
 </head>
 
 <body>
-    <?php include('includes/header.inc.php'); ?>
+    <?php $current_page = 'pricing'; include('includes/header.inc.php'); ?>
     <div class="service-pricing">
         <?php foreach ($pricingInfo as $service) : ?>
             <h1 class="service-pricing-heading"><?php echo $service['name']; ?></h1>

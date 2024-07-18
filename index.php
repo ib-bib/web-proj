@@ -38,7 +38,7 @@ Done By Elteyp
     </style>
   </head>
   <body>
-    <?php include('includes/header.inc.php'); ?>
+    <?php $current_page = 'index'; include('includes/header.inc.php'); ?>
     <main class="home-main">
         <div class="intro">
             We are a team of software developers who like to build and design

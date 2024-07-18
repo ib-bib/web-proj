@@ -16,44 +16,47 @@ $servicesInfo = $controller->getServicesInfo();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/services.css">
     <title>Services</title>
 </head>
 
 <body>
-    <?php include('includes/header.inc.php'); ?>
+    <?php $current_page = 'services'; include('includes/header.inc.php'); ?>
     <?php foreach ($servicesInfo as $service) : ?>
         <section class="service-section" data-service-id="<?php echo $service['id']; ?>">
-            <div class="service-top">
-                <h2 class="service-title"><?php echo $service['name']; ?></h2>
-                <div class="service-tiers">
-                    <?php foreach ($service['tiers'] as $tier) : ?>
-                        <span onclick="toOrderPage('<?php echo $service['id']; ?>', '<?php echo $tier['id']; ?>')" class="tier">
-                            <?php echo $tier['name']; ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="service-bottom">
-                <div class="service-description">
-                    <?php echo $service['description']; ?>
-                </div>
-                <div class="service-slideshow">
-                    <div class="slideshow-container">
-                        <?php $imageCount = count($service['images']); ?>
-                        <?php foreach ($service['images'] as $index => $image) : ?>
-                            <div class="mySlides fade">
-                                <div class="numbertext"><?php echo $index + 1; ?> / <?php echo $imageCount; ?></div>
-                                <img src=".<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>">
-                            </div>
+            <div class="service-container">
+                <div class="service-top">
+                    <h2 class="service-title"><?php echo $service['name']; ?></h2>
+                    <div class="service-tiers">
+                        <?php foreach ($service['tiers'] as $tier) : ?>
+                            <span onclick="toOrderPage('<?php echo $service['id']; ?>', '<?php echo $tier['id']; ?>')" class="tier">
+                                <?php echo $tier['name']; ?>
+                            </span>
                         <?php endforeach; ?>
-                        <a class="prev" onclick="plusSlides(-1, <?php echo $service['id']; ?>)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1, <?php echo $service['id']; ?>)">&#10095;</a>
                     </div>
-                    <br />
-                    <div class="dot-container">
-                        <?php for ($i = 1; $i <= $imageCount; $i++) : ?>
-                            <span class="dot" onclick="currentSlide(<?php echo $i; ?>, <?php echo $service['id']; ?>)"></span>
-                        <?php endfor; ?>
+                </div>
+                <div class="service-bottom">
+                    <div class="service-description">
+                        <?php echo $service['description']; ?>
+                    </div>
+                    <div class="service-slideshow">
+                        <div class="slideshow-container">
+                            <?php $imageCount = count($service['images']); ?>
+                            <?php foreach ($service['images'] as $index => $image) : ?>
+                                <div class="mySlides fade">
+                                    <div class="numbertext"><?php echo $index + 1; ?> / <?php echo $imageCount; ?></div>
+                                    <img src=".<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>">
+                                </div>
+                            <?php endforeach; ?>
+                            <a class="prev" onclick="plusSlides(-1, <?php echo $service['id']; ?>)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, <?php echo $service['id']; ?>)">&#10095;</a>
+                        </div>
+                        <br />
+                        <div class="dot-container">
+                            <?php for ($i = 1; $i <= $imageCount; $i++) : ?>
+                                <span class="dot" onclick="currentSlide(<?php echo $i; ?>, <?php echo $service['id']; ?>)"></span>
+                            <?php endfor; ?>
+                        </div>
                     </div>
                 </div>
             </div>
