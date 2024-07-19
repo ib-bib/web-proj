@@ -1,10 +1,12 @@
 <?php
 /*
 Author:  Talal
+Created: June 19
+Modified: July 18
 */
-include_once(__DIR__ . "/controllers/ServiceController.php");
 
-// Create an instance of the ServiceController
+// Include ServiceController and fetch service information
+include_once(__DIR__ . "/controllers/ServiceController.php");
 $controller = new ServiceController();
 $servicesInfo = $controller->getServicesInfo();
 ?>
@@ -21,15 +23,21 @@ $servicesInfo = $controller->getServicesInfo();
 </head>
 
 <body>
-    <?php $current_page = 'services';
-    include('includes/header.inc.php'); ?>
+    <?php
+    // Include header and set current page for navigation
+    $current_page = 'services';
+    include('includes/header.inc.php');
+    ?>
+
     <?php foreach ($servicesInfo as $service) : ?>
         <section class="service-section" data-service-id="<?php echo $service['id']; ?>">
             <div class="service-container">
                 <div class="service-top">
+                    <!-- Service Title -->
                     <h2 class="service-title"><?php echo $service['name']; ?></h2>
                     <div class="service-tiers">
                         <?php foreach ($service['tiers'] as $tier) : ?>
+                            <!-- Service Tiers for Ordering -->
                             <span onclick="toOrderPage('<?php echo $service['id']; ?>', '<?php echo $tier['id']; ?>')" class="tier">
                                 <?php echo $tier['name']; ?>
                             </span>
@@ -38,23 +46,30 @@ $servicesInfo = $controller->getServicesInfo();
                 </div>
                 <div class="service-bottom">
                     <div class="service-description">
+                        <!-- Service Description -->
                         <?php echo $service['description']; ?>
                     </div>
                     <div class="service-slideshow">
                         <div class="slideshow-container">
-                            <?php $imageCount = count($service['images']); ?>
+                            <?php
+                            $imageCount = count($service['images']);
+                            ?>
                             <?php foreach ($service['images'] as $index => $image) : ?>
+                                <!-- Slides for Service Images -->
                                 <div class="mySlides fade">
                                     <div class="numbertext"><?php echo $index + 1; ?> / <?php echo $imageCount; ?></div>
                                     <img src=".<?php echo $image['url']; ?>" alt="<?php echo $image['name']; ?>">
                                 </div>
                             <?php endforeach; ?>
+
+                            <!-- Navigation Arrows for Slideshow -->
                             <a class="prev" onclick="plusSlides(-1, <?php echo $service['id']; ?>)">&#10094;</a>
                             <a class="next" onclick="plusSlides(1, <?php echo $service['id']; ?>)">&#10095;</a>
                         </div>
                         <br />
                         <div class="dot-container">
                             <?php for ($i = 1; $i <= $imageCount; $i++) : ?>
+                                <!-- Dots for Slide Navigation -->
                                 <span class="dot" onclick="currentSlide(<?php echo $i; ?>, <?php echo $service['id']; ?>)"></span>
                             <?php endfor; ?>
                         </div>
@@ -63,7 +78,9 @@ $servicesInfo = $controller->getServicesInfo();
             </div>
         </section>
     <?php endforeach; ?>
+
     <?php include('includes/footer.inc.php'); ?>
+
     <script>
         let slideIndexes = {};
 
@@ -107,6 +124,7 @@ $servicesInfo = $controller->getServicesInfo();
             initSlides(serviceId);
         });
     </script>
+
     <script src="./assets/js/script.js"></script>
 </body>
 

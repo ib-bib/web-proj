@@ -1,7 +1,10 @@
 <?php
 /*
 Author:  Ibrahim
+Created: June 19
+Modified: July 18
 */
+
 session_start();
 include_once(__DIR__ . "/controllers/OrderController.php");
 ini_set('display_errors', 1);
@@ -26,6 +29,7 @@ unset($_SESSION['selectedTierId']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
 
+    // Handle tracking action
     if (isset($_GET['action']) && $_GET['action'] === 'track') {
         $orderRef = $_POST['order_ref'];
         $result = $orderController->trackOrder($orderRef);
@@ -38,7 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(['success' => false]);
         }
-    } elseif (isset($_GET['action']) && $_GET['action'] === 'cancel') {
+    }
+    // Handle cancel action
+    elseif (isset($_GET['action']) && $_GET['action'] === 'cancel') {
         $orderId = $_POST['order_id'];
         $result = $orderController->cancelOrder($orderId);
 
@@ -47,7 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(['success' => false]);
         }
-    } else {
+    }
+    // Handle create order action
+    else {
         $serviceTierId = $_POST['service_tier_id'];
         $clientEmail = $_POST['client_email'];
 
@@ -79,44 +87,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="new-order-card">
             <h2>Place A New Order</h2>
             <div class="new-order-form">
+                <!-- Select Service Dropdown -->
                 <label for="services">Select Service</label>
                 <select name="services" id='services-dropdown'>
                     <option value="">Select a service</option>
-                    <?php foreach ($services as $service) : ?>
+                    <?php
+                    // Loop through services array to populate options
+                    foreach ($services as $service) : ?>
                         <option value="<?php echo $service['id']; ?>"><?php echo $service['name']; ?></option>
                     <?php endforeach; ?>
                 </select>
 
+                <!-- Select Pricing Tier Dropdown -->
                 <label for="tiers">Select Pricing Tier</label>
                 <select name="tiers" id='tiers-dropdown' disabled>
                     <option value="">Select a tier</option>
-                    <?php foreach ($tiers as $tier) : ?>
+                    <?php
+                    // Loop through tiers array to populate options
+                    foreach ($tiers as $tier) : ?>
                         <option value="<?php echo $tier['id']; ?>"><?php echo $tier['name']; ?></option>
                     <?php endforeach; ?>
                 </select>
 
+                <!-- Email Input Field -->
                 <label for="email">Enter Your Email Address</label>
                 <input type="email" id="email-input" placeholder="example@mail.com" disabled />
+
+                <!-- Order Price Display -->
                 <h3 class="order-price">This Service Will Cost:</h3>
                 <h3 id="price-display" class="order-price">$00.00</h3>
             </div>
+
+            <!-- Request Button -->
             <div class="new-order-card-button-container">
                 <button id="request-button" class="new-order-btn" disabled>Request</button>
             </div>
         </div>
+
+        <!-- Track Order Section -->
         <div class="track-order-card">
             <h2>Already Ordered A Service?</h2>
             <div class="track-order-form">
+                <!-- Order Reference Input -->
                 <label for="order-ref">Enter Reference ID</label>
                 <input name="order-ref" id="order-ref" type="text" placeholder="A-0123-456-789" />
+
+                <!-- Track Status Button -->
                 <button id="myBtn" class="track-status-btn">Track Status</button>
             </div>
         </div>
     </main>
+
+    <!-- Modal Section for Order Status -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <!-- Order Status Display -->
             <p id="order-status">Order Status: STATUS GOES HERE</p>
+
+            <!-- Cancel Order Button -->
             <button id="cancel-btn" class="cancel-btn" style="display: none;">Cancel Order</button>
         </div>
     </div>
@@ -158,6 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const sessionServiceId = sessionStorage.getItem('selectedServiceId');
             const sessionTierId = sessionStorage.getItem('selectedTierId');
 
+            // Populate dropdowns and fields from session storage
             if (sessionServiceId) {
                 servicesDropdown.value = sessionServiceId;
                 tiersDropdown.disabled = false;
@@ -185,6 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 sessionStorage.clear()
             }
 
+            // Event listener for services dropdown change
             servicesDropdown.addEventListener('change', function() {
                 const serviceId = sessionServiceId ?? this.value;
                 if (serviceId) {
@@ -213,6 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             });
 
+            // Event listener for tiers dropdown change
             tiersDropdown.addEventListener('change', function() {
                 const tierId = this.value;
                 const serviceId = servicesDropdown.value;
@@ -234,10 +266,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             });
 
+            // Event listener for email input
             emailInput.addEventListener('input', function() {
                 requestButton.disabled = !this.value;
             });
 
+            // Event listener for request button click
             requestButton.addEventListener('click', function() {
                 const serviceId = servicesDropdown.value;
                 const tierId = tiersDropdown.value;
@@ -250,6 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     requestButton.disabled = true;
                     requestButton.textContent = '...';
 
+                    // Create toast notification
                     const toast = document.createElement('div');
                     toast.className = 'toast';
                     toast.textContent = 'Loading...';
@@ -264,6 +299,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     document.body.appendChild(toast);
 
+                    // Make request to create order
                     fetch('order.php', {
                             method: 'POST',
                             headers: {
@@ -295,10 +331,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             });
 
+            // Event listener for track order button click
             trackBtn.onclick = function() {
                 const orderRef = document.getElementById('order-ref').value;
 
                 if (orderRef) {
+                    // Make request to track order
                     fetch('order.php?action=track', {
                             method: 'POST',
                             headers: {
@@ -310,7 +348,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         .then(data => {
                             try {
                                 const jsonData = JSON.parse(data);
-                                console.log('Response:', jsonData); // Add this line to log the response
+                                console.log('Response:', jsonData); // Log the response
                                 const orderStatus = document.getElementById('order-status');
                                 const cancelButton = document.getElementById('cancel-btn');
 
@@ -335,16 +373,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             }
                         })
                         .catch((error) => {
-                            console.error('Error:', error); // Add this line to log errors
+                            console.error('Error:', error); // Log errors
                             alert('An error occurred, please try again later.');
                         });
                 }
             };
 
+            // Event listener for cancel order button click
             cancelBtn.onclick = function() {
                 const orderId = document.getElementById('cancel-btn').dataset.orderId;
 
                 if (orderId) {
+                    // Make request to cancel order
                     fetch('order.php?action=cancel', {
                             method: 'POST',
                             headers: {
@@ -354,7 +394,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Cancel Response:', data); // Add this line to log the response
+                            console.log('Cancel Response:', data); // Log the response
                             if (data.success) {
                                 alert('Order canceled successfully');
                                 modal.style.display = 'none';
@@ -363,7 +403,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             }
                         })
                         .catch((error) => {
-                            console.error('Cancel Error:', error); // Add this line to log errors
+                            console.error('Cancel Error:', error); // Log errors
                             alert('An error occurred, please try again later.');
                         });
                 }
